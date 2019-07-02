@@ -4,19 +4,16 @@ const names = [
   "Eminem",
   "Ludacris",
   "Shakira",
-  "Kanye",
   "Nelly",
   "Rihanna",
   "Outkast",
   "Coldplay",
   "Adele",
   "Drake",
-  "Madonna",
   "Usher",
-  "Fergie",
   "Ashanti",
   "Timbaland",
-  "Fantasia",
+  "Daughtry",
   "Maxwell"
 ];
 
@@ -25,6 +22,7 @@ let wrongletter = document.getElementById("wrongLetters");
 let GuessRemains = document.getElementById("remainingGuess");
 let correctWords = document.getElementById("totalWins");
 let wrongWords = document.getElementById("totalLoss");
+let musicianImg = document.getElementById("image");
 let maxLives = 12;
 let letterDash;
 let incorrectLetter;
@@ -55,6 +53,45 @@ function celebrityGame() {
   beginGame();
 }
 
+// //images
+
+function celebImage() {
+  console.log(computerRandPick);
+  console.log(musicianImg);
+  console.log(names);
+  if (computerRandPick === names[0].toLowerCase()) {
+    musicianImg.src = "./assets/images/beyonce.jpg";
+  } else if (computerRandPick === names[1].toLowerCase()) {
+    musicianImg.src = "./assets/images/eminem.jpg";
+  } else if (computerRandPick === names[2].toLowerCase()) {
+    musicianImg.src = "./assets/images/Ludacris.jpg";
+  } else if (computerRandPick === names[3].toLowerCase()) {
+    musicianImg.src = "./assets/images/shakira.jpg";
+  } else if (computerRandPick === names[4].toLowerCase()) {
+    musicianImg.src = "./assets/images/nelly.jpg";
+  } else if (computerRandPick === names[5].toLowerCase()) {
+    musicianImg.src = "./assets/images/Rihanna.jpg";
+  } else if (computerRandPick === names[6].toLowerCase()) {
+    musicianImg.src = "./assets/images/outkast.jpg";
+  } else if (computerRandPick === names[7].toLowerCase()) {
+    musicianImg.src = "./assets/images/coldplay-group.png";
+  } else if (computerRandPick === names[8].toLowerCase()) {
+    musicianImg.src = "./assets/images/adele.jpg";
+  } else if (computerRandPick === names[9].toLowerCase()) {
+    musicianImg.src = "./assets/images/drake.jpg";
+  } else if (computerRandPick === names[10].toLowerCase()) {
+    musicianImg.src = "./assets/images/usher.png";
+  } else if (computerRandPick === names[11].toLowerCase()) {
+    musicianImg.src = "./assets/images/ashanti.jpg";
+  } else if (computerRandPick === names[12].toLowerCase()) {
+    musicianImg.src = "./assets/images/timbaland.png";
+  } else if (computerRandPick === names[13].toLowerCase()) {
+    musicianImg.src = "./assets/images/daughtry.jpg";
+  } else if (computerRandPick === names[14]) {
+    musicianImg.src = "./assets/images/maxwell.jpg";
+  }
+}
+
 function beginGame() {
   document.onkeyup = function(event) {
     let userGuess = event.key;
@@ -74,19 +111,24 @@ function beginGame() {
       score();
     }
 
-    wrongletter.textContent = "wrong letter " + incorrectLetter.toString();
-    GuessRemains.textContent = "lives remaining " + maxLives;
+    wrongletter.textContent =
+      `wrong letters: "\n" ` + incorrectLetter.toString();
+    GuessRemains.textContent = "lives remaining: " + maxLives;
   };
 }
 
 function score() {
   if (chosenWord.toString() === letterDash.toString()) {
     wins++;
-    start.textContent = `Congratulations you got ${computerRandPick} right`;
+    celebImage();
+    start.textContent = `Congratulations you got ${computerRandPick} right!!!`;
+
     celebrityGame();
   } else if (maxLives === 0) {
     losses++;
+    celebImage();
     start.textContent = `Sorry, you got ${computerRandPick} wrong`;
+
     celebrityGame();
   }
 }
