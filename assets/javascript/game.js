@@ -111,8 +111,7 @@ function beginGame() {
       score();
     }
 
-    wrongletter.textContent =
-      `wrong letters: "\n" ` + incorrectLetter.toString();
+    wrongletter.textContent = "wrong letters:  " + incorrectLetter.toString();
     GuessRemains.textContent = "lives remaining: " + maxLives;
   };
 }
