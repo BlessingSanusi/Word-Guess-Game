@@ -94,7 +94,11 @@ function celebImage() {
 
 function beginGame() {
   document.onkeyup = function(event) {
+    if (event.keyCode > 90 || event.keyCode < 65) {
+      return alert("Put a valid letter");
+    }
     let userGuess = event.key;
+    console.log(event);
     start.textContent = "";
 
     rightLetter = chosenWord.includes(userGuess);
